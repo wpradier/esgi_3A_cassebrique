@@ -14,7 +14,7 @@
 # include <arpa/inet.h>
 
 
-/* COLORS */
+/* COLORS */
 
 # define _RED "\033[0;31m"
 # define _GREEN "\033[0;32m"

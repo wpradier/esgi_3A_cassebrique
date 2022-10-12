@@ -1,15 +1,22 @@
-NAME = cassebrique
+NAME = unit-tests
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-LDFLAGS =
+CFLAGS = -Wall -Wextra -Werror --coverage
+LDFLAGS = --coverage -lcriterion -lgcov
 
 INCLUDES = includes
 
-SRCS = src/main.c 		\
-       src/utils/ft_strnew.c
+SRCS = u1.c \
+       u2.c
 
 
 OBJS = $(SRCS:.c=.o)
+
+GCNO = $(SRCS:.c=.gcno)
+
+GCDA = $(SRCS:.c=.gcda)
+
+CGCOV = $(SRCS:.c=.c.gcov)
+
 
 _BOLD=\033[1;97m
 _RED=\033[0;31m
@@ -32,15 +39,16 @@ $(NAME): $(OBJS)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 
-$(OBJS): $(INCLUDES)/cassebrique.h
+$(OBJS): $(INCLUDES)/unit-tests.h
+
 
 run: $(NAME)
 	@printf "$(_BOLD)RUNNING EXECUTABLE NOW...$(_NC)\n"
 	@./$(NAME)
 
 clean:
-	@printf "$(_YELLOW)Cleaning object files$(_NC)..."
-	@rm -f $(OBJS)
+	@printf "$(_YELLOW)Cleaning intermediate files$(_NC)..."
+	@rm -f $(OBJS) $(GCNO) $(GCDA) $(CGCOV)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 fclean: clean
@@ -51,8 +59,9 @@ fclean: clean
 re: fclean all
 
 
-tests_run:
-	make -C tests/ run
+coverage: run
+	@printf "$(_BOLD)COVERAGE$(_NC)\n"
+	@gcov $(SRCS)
 
 
-.PHONY: all run clean fclean re tests_run
+.PHONY: all run clean fclean re coverage

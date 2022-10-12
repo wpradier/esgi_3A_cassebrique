@@ -49,3 +49,6 @@ fclean: clean
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 re: fclean all
+
+
+.PHONY: run clean fclean re

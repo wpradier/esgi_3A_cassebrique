@@ -16,9 +16,9 @@
 
 /* COLORS */
 
-# define _RED "\033[0;31m"
-# define _GREEN "\033[0;32m"
-# define _NC "\033[0m"
+# define RED "\033[0;31m"
+# define GREEN "\033[0;32m"
+# define NC "\033[0m"
 
 
 /* PROTOTYPES */

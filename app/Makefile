@@ -35,20 +35,31 @@ $(NAME): $(OBJS)
 $(OBJS): $(INCLUDES)/cassebrique.h
 
 run: $(NAME)
-	@printf "$(_BOLD)RUNNING EXECUTABLE NOW...$(_NC)\n"
+	@printf "$(_BOLD)RUNNING APP...$(_NC)\n"
 	@./$(NAME)
 
 clean:
-	@printf "$(_YELLOW)Cleaning object files$(_NC)..."
+	@printf "$(_YELLOW)Cleaning intermediate app building files$(_NC)..."
 	@rm -f $(OBJS)
 	@printf " $(_GREEN)OK$(_NC)\n"
+ifeq ($(MAKECMDGOALS), clean)
+	@make -C tests/ clean
+endif
 
 fclean: clean
-	@printf "$(_YELLOW)Cleaning executable$(_NC)..."
+	@printf "$(_YELLOW)Cleaning app executable$(_NC)..."
 	@rm -f $(NAME)
 	@printf " $(_GREEN)OK$(_NC)\n"
+	@make -C tests/ fclean
 
 re: fclean all
 
 
-.PHONY: all run clean fclean re
+tests_run:
+	@make -C tests/ run
+
+tests_coverage:
+	@make -C tests/ coverage
+
+
+.PHONY: all run clean fclean re tests_run tests_coverage

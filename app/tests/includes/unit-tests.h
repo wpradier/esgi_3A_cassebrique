@@ -1,5 +1,5 @@
-#ifndef CASSEBRIQUE_H
-# define CASSEBRIQUE_H
+#ifndef MY_UNIT_TESTS_H
+# define MY_UNIT_TESTS_H
 
 
 /* LIBRARIES */
@@ -9,16 +9,14 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
-# include <sys/socket.h>
-# include <sys/ipc.h>
-# include <arpa/inet.h>
-
+# include <criterion/criterion.h>
+# include <criterion/redirect.h>
 
 /* COLORS */
 
-# define RED "\033[0;31m"
-# define GREEN "\033[0;32m"
-# define NC "\033[0m"
+# define _RED "\033[0;31m"
+# define _GREEN "\033[0;32m"
+# define _NC "\033[0m"
 
 
 /* PROTOTYPES */

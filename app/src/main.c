@@ -5,17 +5,17 @@ int	  main(void) {
 
     test_str = ft_strnew(28);
     if (!test_str) {
-	printf(_RED);
+	printf(RED);
 	printf("ft_strnew call returned NULL\n");
-	printf(_NC);
+	printf(NC);
 	return 1;
     }
 
     strcpy(test_str, "Everything is working fine!\n");
 
-    printf(_GREEN);
+    printf(GREEN);
     printf("%s\n", test_str);
-    printf(_NC);
+    printf(NC);
 
     free(test_str);
 

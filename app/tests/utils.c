@@ -24,3 +24,9 @@ Test(utils, strnew_allocates_sizearg_plus_one, .fini = endStrTest) {
 
     cr_assert_eq(teststr[0], '\0');
 }
+
+Test(utils, strnew_negative_size_returns_null, .fini = endStrTest) {
+    teststr = ft_strnew(-1);
+
+    cr_assert_eq(teststr, NULL);
+}

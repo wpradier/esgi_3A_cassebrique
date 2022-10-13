@@ -7,7 +7,7 @@ char	      *ft_strnew(size_t size) {
 
     tot_size = sizeof(char) * (size + 1);
 
-    if (!(new_str = malloc(tot_size))) {
+    if (tot_size <= 0 || !(new_str = malloc(tot_size))) {
 	return NULL;
     }
 

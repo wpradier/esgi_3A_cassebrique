@@ -4,18 +4,21 @@ CFLAGS = -Wall -Wextra -Werror --coverage
 LDFLAGS = --coverage -lcriterion -lgcov
 
 INCLUDES = includes
+TESTED_INCLUDES= ../includes
 
-SRCS = u1.c \
-       u2.c
+SRCS = utils.c
 
 
 OBJS = $(SRCS:.c=.o)
 
-GCNO = $(SRCS:.c=.gcno)
+TESTED_SRCS= ../src/utils/ft_strnew.c
+TESTED_OBJS = $(TESTED_SRCS:.c=.o)
 
-GCDA = $(SRCS:.c=.gcda)
+GCNO = $(SRCS:.c=.gcno) $(TESTED_SRCS:.c=.gcno)
 
-CGCOV = $(SRCS:.c=.c.gcov)
+GCDA = $(SRCS:.c=.gcda) $(TESTED_SRCS:.c=.gcda)
+
+CGCOV = *.c.gcov
 
 
 _BOLD=\033[1;97m
@@ -28,14 +31,14 @@ _NC=\033[0m
 all: $(NAME)
 
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(TESTED_OBJS)
 	@printf "Making $(_BOLD)$@$(_NC)..."
 	@$(CC) -o $@ $^ $(LDFLAGS)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 %.o: %.c
 	@printf "Assembling $(_BOLD)$@$(_NC)..."
-	@$(CC) -o $@ -c $< -I $(INCLUDES) $(CFLAGS)
+	@$(CC) -o $@ -c $< -I$(INCLUDES) -I$(TESTED_INCLUDES) $(CFLAGS)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 
@@ -43,16 +46,16 @@ $(OBJS): $(INCLUDES)/unit-tests.h
 
 
 run: $(NAME)
-	@printf "$(_BOLD)RUNNING EXECUTABLE NOW...$(_NC)\n"
-	@./$(NAME)
+	@printf "$(_BOLD)RUNNING TESTS...$(_NC)\n"
+	@./$(NAME) --verbose
 
 clean:
-	@printf "$(_YELLOW)Cleaning intermediate files$(_NC)..."
+	@printf "$(_YELLOW)Cleaning intermediate tests building files$(_NC)..."
 	@rm -f $(OBJS) $(GCNO) $(GCDA) $(CGCOV)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
 fclean: clean
-	@printf "$(_YELLOW)Cleaning executable$(_NC)..."
+	@printf "$(_YELLOW)Cleaning tests executable$(_NC)..."
 	@rm -f $(NAME)
 	@printf " $(_GREEN)OK$(_NC)\n"
 
@@ -61,7 +64,7 @@ re: fclean all
 
 coverage: run
 	@printf "$(_BOLD)COVERAGE$(_NC)\n"
-	@gcov $(SRCS)
+	@gcov $(SRCS) $(TESTED_SRCS)
 
 
 .PHONY: all run clean fclean re coverage

@@ -9,4 +9,24 @@
  *  - Valider les valeurs liés à la logique de jeu (assez de joueurs... Création d'une fonction externe count_players ?)
  */
 
-t_map	  *init_map(char *path);
+void init_map(char *path){
+    FILE *textfile;
+    char ch;
+
+    textfile = fopen(path, "r");
+    if(textfile == NULL){
+        printf(RED);
+        printf("Erreur d'ouverture du fichier de la map\n");
+        printf(NC);
+    } else{
+        printf(GREEN);
+        printf("Ouverture du fichier de la map avec succès\n");
+        printf(NC);
+
+        while((ch = fgetc(textfile))!=EOF) {
+            putchar(ch);
+        }
+
+        fclose(textfile);
+    }
+}

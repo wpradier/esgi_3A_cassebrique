@@ -6,7 +6,8 @@ LDFLAGS =
 INCLUDES = includes
 
 SRCS = src/main.c 		\
-       src/utils/ft_strnew.c
+       src/utils/ft_strnew.c  \
+	   src/config_funcs/init_config.c
 
 
 OBJS = $(SRCS:.c=.o)

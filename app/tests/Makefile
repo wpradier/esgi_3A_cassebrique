@@ -6,12 +6,15 @@ LDFLAGS = --coverage -lcriterion -lgcov
 INCLUDES = includes
 TESTED_INCLUDES= ../includes
 
-SRCS = utils.c
+SRCS = utils.c \
+       config_funcs.c
 
 
 OBJS = $(SRCS:.c=.o)
 
-TESTED_SRCS= ../src/utils/ft_strnew.c
+TESTED_SRCS= ../src/utils/ft_strnew.c \
+	     ../src/config_funcs/init_config.c
+
 TESTED_OBJS = $(TESTED_SRCS:.c=.o)
 
 GCNO = $(SRCS:.c=.gcno) $(TESTED_SRCS:.c=.gcno)

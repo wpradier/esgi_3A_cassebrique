@@ -12,6 +12,7 @@ SRCS = src/main.c\
        src/utils/warning_msg.c\
        src/utils/highlight_msg.c\
        src/map_funcs/init_map.c\
+       src/map_funcs/free_map.c\
 
 
 OBJS = $(SRCS:.c=.o)

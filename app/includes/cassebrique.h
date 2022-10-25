@@ -75,7 +75,7 @@ typedef struct s_map {
   unsigned short  players_start_bombs;
   int		  width;
   int		  height;
-  t_cell	  ***state;
+  t_cell	  **state;
 } t_map;
 
 
@@ -90,6 +90,10 @@ typedef struct s_game {
 /* PROTOTYPES */
 
 char	    *ft_strnew(size_t size);
+void success_msg(char* string);
+void warning_msg(char* string);
+void highlight_msg(char* string);
+void error_msg(char* string);
 
 // Configuration
 t_config    *init_config(char *path);
@@ -99,7 +103,7 @@ void	    display_config(t_config *config);
 // Map
 int	    validate_map_format(char *path);
 int	    validate_map_data(t_map *path);
-void	    init_map(char *path);
+t_map	    *init_map(char *path);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 

@@ -1,34 +1,29 @@
 #include "cassebrique.h"
 
 int	  main(void) {
-    char  *test_str;
-    char cwd[256];
+    char  *test_str; // string for test function
+    char cwd[256]; // Buffer to get current directory
+    t_map *map; // Map to use
 
-
-    if (getcwd(cwd, sizeof(cwd)) == NULL)
-        perror("getcwd() error");
-    else
-        printf("current working directory is: %s\n", cwd);
-
+    /* Test Function */
     test_str = ft_strnew(28);
     if (!test_str) {
-	printf(RED);
-	printf("ft_strnew call returned NULL\n");
-	printf(NC);
-	return 1;
+        error_msg("ft_strnew call returned NULL");
+        return 1;
     }
-
-    strcpy(test_str, "Everything is working fine!\n");
-
-    printf(GREEN);
-    printf("%s\n", test_str);
-    printf(NC);
-
-
-
+    strcpy(test_str, "\nEverything is working fine!");
+    success_msg(test_str);
     free(test_str);
 
-    //Gestion du fichier de la map
-    init_map("/Users/smveer/Desktop/PiscineC/esgi_3A_cassebrique/app/map.cassebrique");
+    /* Get current directory */
+    if (getcwd(cwd, sizeof(cwd)) == NULL)
+        error_msg("getcwd() error");
+    else
+        highlight_msg("Current working directory is:");
+    printf("\n%s", cwd);
+
+    /* Gestion du fichier de la map */
+    map = init_map("./map.cassebrique");
+    free_map(map);
     return 0;
 }

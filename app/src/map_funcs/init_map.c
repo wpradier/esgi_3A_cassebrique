@@ -61,7 +61,7 @@ t_map *init_map(char *path){
                             map->state[i][j].content = "▒";
                             break;
                         case ' ':
-                            map->state[i][j].content = " ";
+                            map->state[i][j].content = "-";
                             break;
                         case 'p':
                             map->state[i][j].content = "p";
@@ -75,7 +75,5 @@ t_map *init_map(char *path){
         }
         fclose(textfile);
     }
-
-    //display_map(map);
     return map;
 }

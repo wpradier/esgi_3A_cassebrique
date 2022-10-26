@@ -8,6 +8,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+# include <ctype.h>
 # include <math.h>
 # include <sys/socket.h>
 # include <sys/ipc.h>

@@ -7,7 +7,9 @@ INCLUDES = includes
 
 SRCS = src/main.c 		\
        src/utils/ft_strnew.c  \
-	   src/config_funcs/init_config.c
+	   src/config_funcs/init_config.c \
+	   src/config_funcs/display_config.c \
+	   src/config_funcs/free_config.c
 
 
 OBJS = $(SRCS:.c=.o)

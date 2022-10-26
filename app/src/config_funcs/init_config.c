@@ -1,4 +1,4 @@
-#include "../../includes/cassebrique.h"
+#include "cassebrique.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,8 +13,8 @@ t_config    *init_config(char *path){
     //char * mypath = "../../cassebrique.conf";
 
     unsigned short myconf[12];
-    unsigned short* myconf_ptr = NULL;
-    t_config* final_conf = malloc(sizeof(t_config));
+    unsigned short *myconf_ptr = NULL;
+    t_config *final_conf = malloc(sizeof(t_config));
     FILE    *textfile;
     char ch;
     int counter = 0;
@@ -35,7 +35,7 @@ t_config    *init_config(char *path){
             do
             {
                 buffer[counter_buffer++] = ch;
-                number_found = 1;
+                number_found = 1; 
                 ch = fgetc(textfile);
             }
             while(ch!=EOF && isdigit(ch));
@@ -58,35 +58,10 @@ t_config    *init_config(char *path){
     }
     //printf("I've read invincibility_rate=%d\n", final_conf->invincibility_rate);
 
-    if(final_conf->invincibility_rate>0) final_conf->invincibility_rate = 0;
-    if(final_conf->heart_rate>0) final_conf->heart_rate = 0;
-    if(final_conf->health_up_rate>0) final_conf->health_up_rate = 0;
+    /*for some restrictions on some values if needed*/
+    //if(final_conf->invincibility_rate>0) final_conf->invincibility_rate = 0;
+    //if(final_conf->heart_rate>0) final_conf->heart_rate = 0;
+    //if(final_conf->health_up_rate>0) final_conf->health_up_rate = 0;
     
     return final_conf;
-}
-
-
-void	    display_config(t_config *config){
-
-        //printf("%d\n",(*config).bomb_max_range);
-        printf("%d\n",config->bomb_max_range);
-        printf("%d\n",config->bomb_up_rate);
-        printf("%d\n",config->bomb_down_rate);
-        printf("%d\n",config->yellow_flame_rate);
-        printf("%d\n",config->blue_flame_rate);
-        printf("%d\n",config->red_flame_rate);
-        printf("%d\n",config->pass_bomb_rate);
-        printf("%d\n",config->bomb_kick_rate);
-        printf("%d\n",config->invincibility_rate);
-        printf("%d\n",config->heart_rate);
-        printf("%d\n",config->health_up_rate);
-        
-
-}
-
-
-void	    free_config(t_config *config){
-    free(config);
-    config = NULL;
-
 }

@@ -14,6 +14,7 @@ SRCS = src/main.c\
        src/map_funcs/init_map.c\
        src/map_funcs/free_map.c\
        src/map_funcs/display_map.c\
+       src/map_funcs/validate_map_format.c\
 
 
 OBJS = $(SRCS:.c=.o)

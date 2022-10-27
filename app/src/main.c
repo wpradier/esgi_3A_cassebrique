@@ -24,7 +24,7 @@ int	  main(void) {
     printf("\n%s", cwd);
 
     /* Gestion du fichier de la map */
-    map = init_map("./map.cassebrique");
+    map = init_map("map.cassebrique");
 
     mapString = display_map(map);
 

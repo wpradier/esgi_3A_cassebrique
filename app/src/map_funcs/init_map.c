@@ -9,7 +9,11 @@
  *  - Valider les valeurs liés à la logique de jeu (assez de joueurs... Création d'une fonction externe count_players ?)
  */
 
-t_map *init_map(char *path){
+t_map *init_map(char *name){
+    if(validate_map_format(name) != 1){
+        return NULL;
+    }
+
     FILE *textfile; // file to open
     char file_contents[256]; // Buffer to read each line of the file
     int counter = 1; // Counter to get the number of the line currently being read
@@ -17,8 +21,8 @@ t_map *init_map(char *path){
 
     map = malloc(sizeof(t_map));
 
-    textfile = fopen(path, "r");
-    if(textfile == NULL){
+    textfile = fopen(name, "r");
+    if(!textfile){
         error_msg("File didn't open");
         return NULL;
     } else{

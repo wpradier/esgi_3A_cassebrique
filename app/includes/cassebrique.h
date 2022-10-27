@@ -101,9 +101,9 @@ void	    free_config(t_config *config);
 void	    display_config(t_config *config);
 
 // Map
-int	    validate_map_format(char *path);
-int	    validate_map_data(t_map *path);
-t_map	    *init_map(char *path);
+int	        validate_map_format(char *name);
+int	        validate_map_data(t_map *map);
+t_map	    *init_map(char *name);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 

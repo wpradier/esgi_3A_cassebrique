@@ -1,5 +1,2 @@
 unit-tests
-*.o
-*.gcno
-*.gcda
 

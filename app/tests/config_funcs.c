@@ -36,5 +36,20 @@ Test(config_funcs, init_config_returns_a_config_struct_with_right_values, .init=
   cr_assert_eq(_c->heart_rate, 12);
   cr_assert_eq(_c->health_up_rate, 4);
 
+}
+
+Test(config_funcs, init_config_sets_values_defined_in_conf_and_sets_default_values_for_the_rest, .init=initTestConf, .fini=finishTestConf) {
+  t_config *_c;
+
+  fprintf(_f, "blue_flame_rate=4\n");
+  rewind(_f);
+
+  _c = init_config(_TEST_CONF_FILE);
+
+  cr_assert_neq(_c, NULL);
+
+  cr_assert_eq(_c->blue_flame_rate, 4);
+  cr_assert_eq(_c->red_flame_rate, 0);
 
 }
+

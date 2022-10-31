@@ -1,23 +1,28 @@
 #include "unit-tests.h"
 #include "cassebrique.h"
 
+#define _TEST_CONF_FILE "./_casstest.conf"
+
 FILE *_f;
 
 void initTestConf() {
-  _f = fopen("./casstest.conf", "w+");
+  _f = fopen(_TEST_CONF_FILE, "w+");
 }
 
 void finishTestConf() {
   fclose(_f);
-  remove("./casstest.conf");
+  remove(_TEST_CONF_FILE);
 }
 
 Test(config_funcs, init_config_returns_a_config_struct_with_right_values, .init=initTestConf, .fini=finishTestConf) {
   t_config *_c;
 
   fprintf(_f, "bomb_max_range=0\nbomb_up_rate=1\nbomb_down_rate=2\nyellow_flame_rate=3\nblue_flame_rate=4\nred_flame_rate=10\npass_bomb_rate=1000\nbomb_kick_rate=12345\ninvincibility_rate=3\nheart_rate=12\nhealth_up_rate=4\n");
+  rewind(_f);
 
-  _c = init_config("./casstest.conf");
+  _c = init_config(_TEST_CONF_FILE);
+
+  cr_assert_neq(_c, NULL);
 
   cr_assert_eq(_c->bomb_max_range, 0);
   cr_assert_eq(_c->bomb_up_rate, 1);

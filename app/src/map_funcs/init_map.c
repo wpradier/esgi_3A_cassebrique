@@ -9,8 +9,11 @@
  *  - Valider les valeurs liés à la logique de jeu (assez de joueurs... Création d'une fonction externe count_players ?)
  */
 
-t_map *init_map(char *name){
-    if(validate_map_format(name) != 1){
+t_map *init_map(char *name) {
+
+    // Here we will verify file name's extension
+    if (validate_map_format(name) != 1) {
+        warning_msg("File name incorrect (extension .cassebrique)");
         return NULL;
     }
 
@@ -22,25 +25,25 @@ t_map *init_map(char *name){
     map = malloc(sizeof(t_map));
 
     textfile = fopen(name, "r");
-    if(!textfile){
+    if (!textfile) {
         error_msg("File didn't open");
         return NULL;
-    } else{
+    } else {
         success_msg("File opened successfully");
 
         // This permit us to know height and width of the map,
         // and to allocate memory for cells content
         while (fscanf(textfile, "%[^\n] ", file_contents) != EOF) {
-            if(counter == 1)
+            if (counter == 1)
                 sscanf(file_contents, "%hd", &map->players_start_bombs);
-            if(counter == 2) {
+            if (counter == 2) {
                 sscanf(file_contents, "%d %d", &map->width, &map->height);
-                map->state = malloc(sizeof(t_cell)*map->height);
-                if(map->state == NULL)
+                map->state = malloc(sizeof(t_cell) * map->height);
+                if (map->state == NULL)
                     return NULL;
                 for (int i = 0; i < map->height; ++i) {
-                    map->state[i] = malloc(sizeof(t_cell)*map->width);
-                    if(map->state[i] == NULL)
+                    map->state[i] = malloc(sizeof(t_cell) * map->width);
+                    if (map->state[i] == NULL)
                         return NULL;
                 }
                 break;
@@ -78,6 +81,11 @@ t_map *init_map(char *name){
             }
         }
         fclose(textfile);
+    }
+
+    if(validate_map_data(map) != 1){
+        error_msg("Map not valid");
+        return NULL;
     }
     return map;
 }

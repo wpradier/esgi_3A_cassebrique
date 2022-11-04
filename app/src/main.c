@@ -24,20 +24,23 @@ int	  main(void) {
     printf("\n%s", cwd);
 
     /* Gestion du fichier de la map */
-    map = init_map("map.cassebrique");
+    map = init_map("./map.cassebrique");
 
-    mapString = display_map(map);
+    if(map != NULL){
+        mapString = display_map(map);
 
-    printf("\nTaille de la chaîne %lu", strlen(mapString));
-    printf("\n");
+        printf("\nTaille de la chaîne %lu", strlen(mapString));
+        printf("\n");
 
-    for (unsigned long i = 0; i < strlen(mapString); ++i) {
-        printf("%c", mapString[i]);
+        for (unsigned long i = 0; i < strlen(mapString); ++i) {
+            printf("%c", mapString[i]);
+        }
+
+        free(mapString);
+        highlight_msg("Freed map string");
+
+        free_map(map);
     }
 
-    free(mapString);
-    highlight_msg("Freed map string");
-
-    free_map(map);
     return 0;
 }

@@ -1,12 +1,14 @@
 NAME = cassebrique
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LDFLAGS =
+LDFLAGS = -lncurses
 
 INCLUDES = includes
 
-SRCS = src/main.c 		\
-       src/utils/ft_strnew.c
+SRCS = src/main.c 				\
+       src/utils/ft_strnew.c 			\
+       src/menu_funcs/select_startmode_menu.c 	\
+       src/menu_funcs/start_solo_game.c
 
 
 OBJS = $(SRCS:.c=.o)

@@ -1,23 +1,31 @@
 #include "cassebrique.h"
 
-int	  main(void) {
-    char  *test_str;
+int		    main(void) {
+    t_startmode	    startmode;
 
-    test_str = ft_strnew(28);
-    if (!test_str) {
-	printf(RED);
-	printf("ft_strnew call returned NULL\n");
-	printf(NC);
-	return 1;
+    initscr();
+    keypad(stdscr, TRUE);
+
+    startmode = select_startmode_menu();
+    clear();
+
+    switch (startmode) {
+	case NOSTART:
+	    endwin();
+	    printf("Bye!\n");
+	    break;
+	case LOCAL:
+	    start_solo_game();
+	    break;
+	case SERVER:
+	    endwin();
+	    printf("NOT IMPLEMENTED\n");
+	    break;
+	case CLIENT:
+	    printf("NOT IMPLEMENTED\n");
+	    break;
     }
 
-    strcpy(test_str, "Everything is working fine!\n");
-
-    printf(GREEN);
-    printf("%s\n", test_str);
-    printf(NC);
-
-    free(test_str);
-
+    endwin();
     return 0;
 }

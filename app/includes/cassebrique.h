@@ -13,6 +13,7 @@
 # include <sys/ipc.h>
 # include <arpa/inet.h>
 # include <ncurses.h>
+# include <time.h>
 
 
 /* COLORS */

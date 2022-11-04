@@ -12,6 +12,7 @@
 # include <sys/socket.h>
 # include <sys/ipc.h>
 # include <arpa/inet.h>
+# include <ncurses.h>
 
 
 /* COLORS */
@@ -26,11 +27,14 @@
 # define BOMBUP 1
 
 
-/* PLAYMODES */
+/* STARTMODES */
 
-# define LOCAL 0
-# define SERVER 1
-# define CLIENT 2
+typedef enum e_startmode {
+  LOCAL,
+  SERVER,
+  CLIENT,
+  NOSTART
+} t_startmode;
 
 /* STRUCTS */
 
@@ -87,6 +91,8 @@ typedef struct s_game {
 
 /* PROTOTYPES */
 
+
+// Utils
 char	    *ft_strnew(size_t size);
 
 // Configuration
@@ -100,6 +106,10 @@ int	    validate_map_data(t_map *path);
 t_map	    *init_map(char *path);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
+
+// Menu
+t_startmode select_startmode_menu(void);
+void	    start_solo_game(void);
 
 
 #endif

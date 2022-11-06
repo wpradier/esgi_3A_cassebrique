@@ -11,15 +11,18 @@ int		    main(void) {
 
     switch (startmode) {
 	case NOSTART:
+	    endwin();
 	    printf("Bye!\n");
 	    break;
 	case LOCAL:
 	    start_solo_game();
 	    break;
 	case SERVER:
+	    endwin();
 	    printf("NOT IMPLEMENTED\n");
 	    break;
 	case CLIENT:
+	    endwin();
 	    printf("NOT IMPLEMENTED\n");
 	    break;
     }

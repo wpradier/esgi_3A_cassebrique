@@ -8,20 +8,13 @@ typedef struct s_input {
 
 static t_input input = {
   .val = 0,
-  .mutex_input = PTHREAD_MUTEX_INITIALIZER,
-  .cond_write = PTHREAD_COND_INITIALIZER
 };
 
 
 
 void  *thr_f(void *args) {
     while (1) {
-	pthread_mutex_lock(&input.mutex_input);
-	pthread_cond_wait(&input.cond_write);
-	
 	input.val = getch();
-
-	pthread_mutex_unlock(&input.mutex_input);
     }
 }
 
@@ -42,6 +35,16 @@ int main(void) {
     while (1) {
 	clear();
 
+	if (input.val == KEY_DOWN) {
+	    pos++;
+	    input.val = 0;
+	}
+	if (input.val == KEY_UP) {
+	    pos--;
+	    input.val = 0;
+	}
+
+
 	move((LINES / 2) + pos, COLS / 2);
 	printw("LOL");
 
@@ -50,7 +53,7 @@ int main(void) {
 	refresh();
 	
 	time++;
-	sleep(1);
+	usleep(100 * 1000);
     }
 }
 

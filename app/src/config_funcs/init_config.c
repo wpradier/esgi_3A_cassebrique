@@ -18,6 +18,7 @@ t_config    *init_config(char *path){
     FILE    *textfile;
 
     unsigned short value = 0;
+    int counter = 0; 
 
     size_t len = 0;
     ssize_t read;
@@ -44,6 +45,11 @@ t_config    *init_config(char *path){
         // printf("spliter str: %s\n", ptr);
         // ptr = strtok(NULL, delim);
         // printf("spliter int: %d\n", value);
+        
+        counter++;
+        if (counter==len_to_allocate){ //if empty line added to the end of the conf file
+            break;
+        }
     
         
         char *bomb_max_range = strstr("bomb_max_range", ptr);

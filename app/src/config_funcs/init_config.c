@@ -1,8 +1,5 @@
 #include "cassebrique.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+
 
 /* Si ligne de config non valide (mauvaise valeur, mauvais format de ligne) ou non remplie,
  * mettre une valeur par défaut.

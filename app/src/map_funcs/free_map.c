@@ -8,11 +8,11 @@ void free_map(t_map *map){
     for (int i = 0; i < map->height; ++i) {
         free(map->state[i]);
     }
-    highlight_msg("Freed map lines");
+    // highlight_msg("Freed map lines");
 
     free(map->state);
-    highlight_msg("Freed map skeleton");
+    // highlight_msg("Freed map skeleton");
 
     free(map);
-    highlight_msg("Freed map");
+    // highlight_msg("Freed map");
 }

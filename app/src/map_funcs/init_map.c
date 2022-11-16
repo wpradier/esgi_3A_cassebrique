@@ -29,7 +29,7 @@ t_map *init_map(char *name) {
         error_msg("File didn't open");
         return NULL;
     } else {
-        success_msg("File opened successfully");
+        //success_msg("File opened successfully");
 
         // This permit us to know height and width of the map,
         // and to allocate memory for cells content
@@ -52,38 +52,40 @@ t_map *init_map(char *name) {
         }
 
         // This permit us to get or create map content
-        for (int i = 0; i < map->height; ++i) {
-            while (fscanf(textfile, "%[^\n] ", file_contents) != EOF) {
-                //printf("%s << %lu\n", file_contents, strlen(file_contents));
-                for (int j = 0; j < map->width; ++j) {
-
+        for (int i = 0; i < map->height; i++) {
+            //printf("\n");
+            for (int j = 0; j < map->width; j++) {
+                file_contents[j] = fgetc(textfile);
+                if(file_contents[j] == '\n'){
+                    j = j-1;
+                    continue;
+                } else{
                     //printf("%c", file_contents[j]);
-
                     map->state[i][j].type = file_contents[j];
                     switch (file_contents[j]) {
                         case 'x':
-                            map->state[i][j].content = "█";
+                            map->state[i][j].content = NULL;
                             break;
                         case 'm':
-                            map->state[i][j].content = "▒";
+                            map->state[i][j].content = NULL;
                             break;
                         case ' ':
-                            map->state[i][j].content = "-";
+                            map->state[i][j].content = NULL;
                             break;
                         case 'p':
-                            map->state[i][j].content = "p";
+                            map->state[i][j].content = NULL;
                             break;
                         default:
                             break;
                     }
                 }
-                break;
+
             }
         }
         fclose(textfile);
     }
 
-    if(validate_map_data(map) != 1){
+    if(validate_map_data(map) != 0){
         error_msg("Map not valid");
         return NULL;
     }

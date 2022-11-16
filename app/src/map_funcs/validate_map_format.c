@@ -10,7 +10,7 @@ int validate_map_format(char *name){
         error_msg("Wrong file name!");
         return 0;
     } else{
-        success_msg("File name is good!");
+        //success_msg("File name is good!");
         return 1;
     }
 }

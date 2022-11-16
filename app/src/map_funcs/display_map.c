@@ -14,6 +14,7 @@ char *display_map(t_map *map){
     for (int i = 0; i < map->height; ++i) {
         for (int j = 0; j < map->width; ++j) {
             //printf("%s", (char*)map->state[i][j].content);
+            // Creation of sttring to return
             if(map->state[i][j].type != 'p'){
                 if(i == 0 && j == 0){
                     strcpy(mapString, &map->state[i][j].type);
@@ -41,5 +42,28 @@ char *display_map(t_map *map){
         strcat(mapString, "\n");
     }
     //success_msg("Map created as string");
+
+    // Print map before returning
+    printf("\n");
+    for (unsigned long i = 0; i < strlen(mapString) ; i++) {
+        switch (mapString[i]) {
+            case 'x':
+                printf("█");
+                break;
+            case 'm':
+                printf("▒");
+                break;
+            case ' ':
+                printf("-");
+                break;
+            case '\n':
+                printf("\n");
+                break;
+            default:
+                printf("%c", mapString[i]);
+                break;
+        }
+    }
+
     return mapString;
 }

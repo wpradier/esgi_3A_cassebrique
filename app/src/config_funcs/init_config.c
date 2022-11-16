@@ -36,7 +36,7 @@ t_config    *init_config(char *path){
     if(textfile == NULL)
         return NULL;
 
-    in  
+    
     while((read = getline(&line, &len, textfile)) != -1) {
         ptr = strtok(line, delim);
         // printf("spliter str: %s\n", ptr);

@@ -13,6 +13,8 @@
 # include <sys/socket.h>
 # include <sys/ipc.h>
 # include <arpa/inet.h>
+# include <ncurses.h>
+# include <time.h>
 
 
 /* COLORS */
@@ -27,11 +29,14 @@
 # define BOMBUP 1
 
 
-/* PLAYMODES */
+/* STARTMODES */
 
-# define LOCAL 0
-# define SERVER 1
-# define CLIENT 2
+typedef enum e_startmode {
+  LOCAL,
+  SERVER,
+  CLIENT,
+  NOSTART
+} t_startmode;
 
 /* STRUCTS */
 
@@ -50,6 +55,25 @@ typedef struct s_config {
   unsigned short health_up_rate;
 } t_config;
 
+typedef enum e_direction{
+  UP,
+  DOWN,
+  RIGHT,
+  LEFT
+} t_direction;
+
+typedef enum e_player_type{
+  BOT,
+  LOCAL,
+  SOCKET
+} t_player_type;
+
+typedef struct s_cordinates{
+  unsigned int x;
+  unsigned int y;
+} t_cordinates;
+
+
 
 typedef struct s_player {
   char name;
@@ -60,6 +84,7 @@ typedef struct s_player {
   unsigned short is_bomb_kick;
   unsigned int invincible;
   unsigned short heart;
+  t_cordinates cordinates;
 } t_player;
 
 
@@ -88,6 +113,10 @@ typedef struct s_game {
 
 /* PROTOTYPES */
 
+// Deplacemnts
+int    is_possible_to_move(t_map* our_map, t_player* player, t_direction movement);
+
+// Utils
 char	    *ft_strnew(size_t size);
 
 // Configuration
@@ -101,6 +130,10 @@ int	    validate_map_data(t_map *path);
 t_map	    *init_map(char *path);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
+
+// Menu
+t_startmode select_startmode_menu(void);
+void	    start_solo_game(void);
 
 
 #endif

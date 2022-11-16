@@ -36,7 +36,7 @@ t_config    *init_config(char *path){
     if(textfile == NULL)
         return NULL;
 
-    
+    in  
     while((read = getline(&line, &len, textfile)) != -1) {
         ptr = strtok(line, delim);
         // printf("spliter str: %s\n", ptr);
@@ -44,7 +44,7 @@ t_config    *init_config(char *path){
         // printf("spliter int: %d\n", value);
         
         counter++;
-        if (counter==len_to_allocate){ //if empty line added to the end of the conf file
+        if (counter-1==len_to_allocate){ //if empty line added to the end of the conf file
             break;
         }
     

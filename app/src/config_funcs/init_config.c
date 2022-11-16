@@ -24,7 +24,7 @@ t_config    *init_config(char *path){
     char delim[] = "= ";
     char   *ptr = NULL;
 
-    const int default_val = 65535;
+    const int default_val = 0;
 
     // init config with unassigned values
     myconf_ptr = (unsigned short*)(final_conf);
@@ -105,42 +105,7 @@ t_config    *init_config(char *path){
     
     fclose(textfile);
     
-    // Set default value to unassigned parameters
-    if(final_conf->bomb_max_range==default_val){
-        final_conf->bomb_max_range = 0;
-    }
-    if(final_conf->bomb_up_rate==default_val){
-        final_conf->bomb_up_rate = 0;
-    }
-    if(final_conf->bomb_down_rate==default_val){
-        final_conf->bomb_down_rate = 0;
-    }
-    if(final_conf->yellow_flame_rate==default_val){
-        final_conf->yellow_flame_rate = 0;
-    }
-    if(final_conf->blue_flame_rate==default_val){
-        final_conf->blue_flame_rate = 0;
-    }
-    if(final_conf->red_flame_rate==default_val){
-        final_conf->red_flame_rate = 0;
-    }
-    if(final_conf->pass_bomb_rate==default_val){
-        final_conf->pass_bomb_rate = 0;
-    }
-    if(final_conf->bomb_kick_rate==default_val){
-        final_conf->bomb_kick_rate = 0;
-    }
-    if(final_conf->invincibility_rate==default_val){
-        final_conf->invincibility_rate = 0;
-    }
-    if(final_conf->heart_rate==default_val){
-        final_conf->heart_rate = 0;
-    }
-    if(final_conf->health_up_rate==default_val){
-        final_conf->health_up_rate = 0;
-    }
-
-    //display_config(final_conf);
+    
 
     return final_conf;
 }

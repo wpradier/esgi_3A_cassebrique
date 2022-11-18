@@ -8,9 +8,9 @@ int validate_map_format(char *name){
 
     if(strcmp(name + strlen(name) - strlen(extension), extension) != 0){
         error_msg("Wrong file name!");
-        return 0;
+        return INVALID_FILE_NAME;
     } else{
         //success_msg("File name is good!");
-        return 1;
+        return VALID_MAP_FORMAT;
     }
 }

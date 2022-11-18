@@ -34,6 +34,13 @@
 # define SERVER 1
 # define CLIENT 2
 
+
+/* RETURN CODES */
+
+ /* MAP FORMATS */
+# define VALID_MAP_FORMAT 0
+# define INVALID_FILE_NAME 1
+
 /* STRUCTS */
 
 typedef struct s_config {
@@ -75,7 +82,7 @@ typedef struct s_map {
   unsigned short  players_start_bombs;
   int		  width;
   int		  height;
-  t_cell	  **state;
+  t_cell	  ***state;
 } t_map;
 
 
@@ -103,7 +110,7 @@ void	    display_config(t_config *config);
 // Map
 int	        validate_map_format(char *name);
 int	        validate_map_data(t_map *map);
-t_map	    *init_map(char *name);
+t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 

@@ -5,11 +5,11 @@
 
 char *display_map(t_map *map){
     char* mapString; // String to return
-    mapString = malloc(sizeof(char)*map->height*(map->width+1)+1);
+    mapString = malloc(sizeof(char) * (map->height * (map->width + 1) + 1));
 
     for (int i = 0; i < map->height; ++i) {
         for (int j = 0; j < map->width; ++j) {
-            switch (map->state[i][j].type) {
+            switch (map->state[i][j]->type) {
                 case 'x':
                     if(i == 0 && j == 0){
                         strcpy(mapString, "█");
@@ -33,25 +33,25 @@ char *display_map(t_map *map){
                     break;
                 case 'p':
                     // We check the content to show player name, else we add 'p'
-                    if(map->state[i][j].content != NULL){
+                    if(map->state[i][j]->content != NULL){
                         if(i == 0 && j == 0){
-                            strcpy(mapString, map->state[i][j].content); // todo content.name
+                            strcpy(mapString, map->state[i][j]->content); // todo content.name
                         }else{
-                            strcat(mapString, map->state[i][j].content); // todo content.name
+                            strcat(mapString, map->state[i][j]->content); // todo content.name
                         }
                     }else{
                         if(i == 0 && j == 0){
-                            strcpy(mapString, &map->state[i][j].type);
+                            strcpy(mapString, &map->state[i][j]->type);
                         }else{
-                            strcat(mapString, &map->state[i][j].type);
+                            strcat(mapString, &map->state[i][j]->type);
                         }
                     }
                     break;
                 default:
                     if(i == 0 && j == 0){
-                        strcpy(mapString, &map->state[i][j].type);
+                        strcpy(mapString, &map->state[i][j]->type);
                     }else{
-                        strcat(mapString, &map->state[i][j].type);
+                        strcat(mapString, &map->state[i][j]->type);
                     }
                     break;
             }

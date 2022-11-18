@@ -14,6 +14,7 @@ int	  main(void) {
 
     map_file = fopen(map_file_name, "r");
 
+    printf("WELCOME\n");
     map = init_map(map_file);
     if(map != NULL){
         mapString = display_map(map);

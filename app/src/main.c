@@ -29,7 +29,7 @@ int	  main(void) {
 	    endwin();
 	    printf("NOT IMPLEMENTED\n");
 	    break;
-
+    }
     endwin();
 
     map_file_name = "maps/test.cassebrique";

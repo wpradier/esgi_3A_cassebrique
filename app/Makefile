@@ -7,8 +7,10 @@ INCLUDES = includes
 
 SRCS = src/main.c 				\
        src/utils/ft_strnew.c 			\
+       src/map_funcs/list_available_maps.c 	\
        src/menu_funcs/select_startmode_menu.c 	\
-       src/menu_funcs/start_solo_game.c
+       src/menu_funcs/start_solo_game.c 	\
+       src/menu_funcs/select_map_menu.c
 
 
 OBJS = $(SRCS:.c=.o)

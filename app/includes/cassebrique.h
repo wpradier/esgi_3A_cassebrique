@@ -14,6 +14,7 @@
 # include <arpa/inet.h>
 # include <ncurses.h>
 # include <time.h>
+# include <dirent.h>
 
 
 /* COLORS */
@@ -107,10 +108,12 @@ int	    validate_map_data(t_map *path);
 t_map	    *init_map(char *path);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
+t_map	    **list_available_maps(void);
 
 // Menu
 t_startmode select_startmode_menu(void);
 void	    start_solo_game(void);
+t_map	    *select_map_menu(void);
 
 
 #endif

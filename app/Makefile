@@ -5,8 +5,17 @@ LDFLAGS =
 
 INCLUDES = includes
 
-SRCS = src/main.c 		\
-       src/utils/ft_strnew.c
+SRCS = src/main.c\
+       src/utils/ft_strnew.c\
+       src/utils/error_msg.c\
+       src/utils/success_msg.c\
+       src/utils/warning_msg.c\
+       src/utils/highlight_msg.c\
+       src/map_funcs/init_map.c\
+       src/map_funcs/free_map.c\
+       src/map_funcs/display_map.c\
+       src/map_funcs/validate_map_data.c\
+       src/map_funcs/validate_map_format.c\
 
 
 OBJS = $(SRCS:.c=.o)

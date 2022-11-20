@@ -22,6 +22,8 @@
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define NC "\033[0m"
+# define YELLOW "\033[0;33m"
+# define CYAN "\033[0;36m"
 
 
 /* POWERUPS */
@@ -37,6 +39,13 @@ typedef enum e_startmode {
   CLIENT,
   NOSTART
 } t_startmode;
+
+
+/* RETURN CODES */
+
+ /* MAP FORMATS */
+# define VALID_MAP_FORMAT 0
+# define INVALID_FILE_NAME 1
 
 /* STRUCTS */
 
@@ -96,6 +105,10 @@ typedef struct s_game {
 
 // Utils
 char	    *ft_strnew(size_t size);
+void success_msg(char* string);
+void warning_msg(char* string);
+void highlight_msg(char* string);
+void error_msg(char* string);
 
 // Configuration
 t_config    *init_config(char *path);
@@ -103,9 +116,9 @@ void	    free_config(t_config *config);
 void	    display_config(t_config *config);
 
 // Map
-int	    validate_map_format(char *path);
-int	    validate_map_data(t_map *path);
-t_map	    *init_map(char *path);
+int	        validate_map_format(char *name);
+int	        validate_map_data(t_map *map);
+t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 t_map	    **list_available_maps(void);

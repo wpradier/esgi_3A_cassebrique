@@ -25,7 +25,18 @@
 
 /* POWERUPS */
 
-# define BOMBUP 1
+typedef enum e_power_up{
+    BOMB_UP,
+    BOMB_DOWN,
+    YELLOW_FLAME,
+    BLUE_FLAME,
+    RED_FLAME,
+    BOMB_KICK,
+    BOMB_PASS,
+    INVICIBILITY,
+    HEART,
+    HEALTH_UP
+}t_power_up;
 
 
 /* PLAYMODES */
@@ -94,6 +105,8 @@ typedef struct s_game {
   int		  playmode;
 } t_game;
 
+
+
 /* PROTOTYPES */
 
 char	    *ft_strnew(size_t size);
@@ -114,5 +127,8 @@ t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 
+// Power Ups
+
+t_power_up give_power_up(t_config* config);
 
 #endif

@@ -8,11 +8,11 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <string.h>
+# include <ctype.h>
 # include <math.h>
 # include <sys/socket.h>
 # include <sys/ipc.h>
 # include <arpa/inet.h>
-
 
 /* COLORS */
 
@@ -47,6 +47,7 @@ typedef enum e_power_up{
 # define CLIENT 2
 
 
+
 /* RETURN CODES */
 
  /* MAP FORMATS */
@@ -70,6 +71,7 @@ typedef struct s_config {
     unsigned short heart_rate;
     unsigned short health_up_rate;
 } t_config;
+
 
 
 typedef struct s_player {
@@ -111,6 +113,8 @@ typedef struct s_game {
 
 /* PROTOTYPES */
 
+
+// Utils
 char	    *ft_strnew(size_t size);
 void success_msg(char* string);
 void warning_msg(char* string);
@@ -133,5 +137,6 @@ char	    *display_map(t_map *map);
 double get_sum_of_all_rates(t_config* config);
 double* get_probabilities(t_config* config);
 t_power_up give_power_up(t_config* config);
+
 
 #endif

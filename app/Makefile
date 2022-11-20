@@ -17,6 +17,9 @@ SRCS = src/main.c\
        src/map_funcs/validate_map_data.c\
        src/map_funcs/validate_map_format.c\
        src/power_up_funcs/give_power_up.c\
+       src/config_funcs/init_config.c \
+       src/config_funcs/display_config.c \
+       src/config_funcs/free_config.c
 
 
 OBJS = $(SRCS:.c=.o)

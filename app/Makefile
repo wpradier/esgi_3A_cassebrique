@@ -6,7 +6,8 @@ LDFLAGS =
 INCLUDES = includes
 
 SRCS = src/main.c 		\
-       src/utils/ft_strnew.c
+       src/utils/ft_strnew.c\
+	   src/movements_funcs/is_possible_to_move.c
 
 
 OBJS = $(SRCS:.c=.o)

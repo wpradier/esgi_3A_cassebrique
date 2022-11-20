@@ -19,11 +19,25 @@
 # define RED "\033[0;31m"
 # define GREEN "\033[0;32m"
 # define NC "\033[0m"
+# define YELLOW "\033[0;33m"
+# define CYAN "\033[0;36m"
 
 
 /* POWERUPS */
 
-# define BOMBUP 1
+typedef enum e_power_up{
+    BOMB_UP,
+    BOMB_DOWN,
+    YELLOW_FLAME,
+    BLUE_FLAME,
+    RED_FLAME,
+    BOMB_PASS,
+    BOMB_KICK,
+    INVICIBILITY,
+    HEART,
+    HEALTH_UP,
+    NO_POWER
+}t_power_up;
 
 
 /* PLAYMODES */
@@ -33,21 +47,29 @@
 # define CLIENT 2
 
 
+
+/* RETURN CODES */
+
+ /* MAP FORMATS */
+# define VALID_MAP_FORMAT 0
+# define INVALID_FILE_NAME 1
+
 /* STRUCTS */
 
 typedef struct s_config {
-  unsigned short bomb_max_range;
-  // Spawn rates
-  unsigned short bomb_up_rate;
-  unsigned short bomb_down_rate;
-  unsigned short yellow_flame_rate;
-  unsigned short blue_flame_rate;
-  unsigned short red_flame_rate;
-  unsigned short pass_bomb_rate;
-  unsigned short bomb_kick_rate;
-  unsigned short invincibility_rate;
-  unsigned short heart_rate;
-  unsigned short health_up_rate;
+    unsigned short number_of_powers;
+    unsigned short bomb_max_range;
+    // Spawn rates
+    unsigned short bomb_up_rate;
+    unsigned short bomb_down_rate;
+    unsigned short yellow_flame_rate;
+    unsigned short blue_flame_rate;
+    unsigned short red_flame_rate;
+    unsigned short pass_bomb_rate;
+    unsigned short bomb_kick_rate;
+    unsigned short invincibility_rate;
+    unsigned short heart_rate;
+    unsigned short health_up_rate;
 } t_config;
 
 
@@ -87,11 +109,17 @@ typedef struct s_game {
   int		  playmode;
 } t_game;
 
+
+
 /* PROTOTYPES */
 
 
 // Utils
 char	    *ft_strnew(size_t size);
+void success_msg(char* string);
+void warning_msg(char* string);
+void highlight_msg(char* string);
+void error_msg(char* string);
 
 // Configuration
 t_config    *init_config(char *path);
@@ -99,12 +127,16 @@ void	    free_config(t_config *config);
 void	    display_config(t_config *config);
 
 // Map
-int	    validate_map_format(char *path);
-int	    validate_map_data(t_map *path);
-t_map	    *init_map(char *path);
+int	        validate_map_format(char *name);
+int	        validate_map_data(t_map *map);
+t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 
+// Power Ups
+double get_sum_of_all_rates(t_config* config);
+double* get_probabilities(t_config* config);
+t_power_up give_power_up(t_config* config);
 
 
 #endif

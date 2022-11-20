@@ -31,11 +31,12 @@ typedef enum e_power_up{
     YELLOW_FLAME,
     BLUE_FLAME,
     RED_FLAME,
-    BOMB_KICK,
     BOMB_PASS,
+    BOMB_KICK,
     INVICIBILITY,
     HEART,
-    HEALTH_UP
+    HEALTH_UP,
+    NO_POWER
 }t_power_up;
 
 
@@ -55,18 +56,19 @@ typedef enum e_power_up{
 /* STRUCTS */
 
 typedef struct s_config {
-  unsigned short bomb_max_range;
-  // Spawn rates
-  unsigned short bomb_up_rate;
-  unsigned short bomb_down_rate;
-  unsigned short yellow_flame_rate;
-  unsigned short blue_flame_rate;
-  unsigned short red_flame_rate;
-  unsigned short pass_bomb_rate;
-  unsigned short bomb_kick_rate;
-  unsigned short invincibility_rate;
-  unsigned short heart_rate;
-  unsigned short health_up_rate;
+    unsigned short number_of_powers;
+    unsigned short bomb_max_range;
+    // Spawn rates
+    unsigned short bomb_up_rate;
+    unsigned short bomb_down_rate;
+    unsigned short yellow_flame_rate;
+    unsigned short blue_flame_rate;
+    unsigned short red_flame_rate;
+    unsigned short pass_bomb_rate;
+    unsigned short bomb_kick_rate;
+    unsigned short invincibility_rate;
+    unsigned short heart_rate;
+    unsigned short health_up_rate;
 } t_config;
 
 
@@ -128,7 +130,8 @@ void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
 
 // Power Ups
-
+double get_sum_of_all_rates(t_config* config);
+double* get_probabilities(t_config* config);
 t_power_up give_power_up(t_config* config);
 
 #endif

@@ -73,7 +73,17 @@ typedef struct s_config {
     unsigned short health_up_rate;
 } t_config;
 
+typedef enum e_direction{
+  UP,
+  DOWN,
+  RIGHT,
+  LEFT
+}t_direction;
 
+typedef struct s_cordinates{
+  unsigned int x;
+  unsigned int y;
+}t_cordinates;
 
 typedef struct s_player {
   char name;
@@ -84,6 +94,7 @@ typedef struct s_player {
   unsigned short is_bomb_kick;
   unsigned int invincible;
   unsigned short heart;
+    t_cordinates cordinates;
 } t_player;
 
 
@@ -114,6 +125,8 @@ typedef struct s_game {
 
 /* PROTOTYPES */
 
+// Players movements
+int is_possible_to_move(t_map* our_map, t_player* player, t_direction movement);
 
 // Utils
 char	    *ft_strnew(size_t size);

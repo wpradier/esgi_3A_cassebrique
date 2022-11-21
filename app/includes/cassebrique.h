@@ -59,6 +59,7 @@ typedef enum e_power_up{
 typedef struct s_config {
     unsigned short number_of_powers;
     unsigned short bomb_max_range;
+    unsigned short powers_spawn_rate;
     // Spawn rates
     unsigned short bomb_up_rate;
     unsigned short bomb_down_rate;

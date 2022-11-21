@@ -60,6 +60,8 @@ t_config    *init_config(char *path){
         char *invincibility_rate = strstr("invincibility_rate", ptr);
         char *heart_rate = strstr("heart_rate", ptr);
         char *health_up_rate = strstr("health_up_rate", ptr);
+        char *number_of_powers = strstr("number_of_powers", ptr);
+        char *powers_spawn_rate = strstr("powers_spawn_rate", ptr);
 
         ptr = strtok(NULL, delim);
         value = (unsigned short)(atoi(ptr));
@@ -96,6 +98,12 @@ t_config    *init_config(char *path){
         }
         else if (health_up_rate != NULL){
             final_conf->health_up_rate = value;
+        }
+        else if (number_of_powers != NULL){
+            final_conf->number_of_powers = value;
+        }
+        else if (powers_spawn_rate != NULL){
+            final_conf->powers_spawn_rate = value;
         }
         else {
             printf("the given config line is not readable [%s]\n", line);

@@ -44,6 +44,6 @@ int	  main(void) {
 
       free_map(map);
   }
-  free(test_str)
+  free(test_str);
   return 0;
 }

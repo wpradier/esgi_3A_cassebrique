@@ -14,6 +14,8 @@ void	    display_config(t_config *config){
         printf("invincibility_rate = %d\n",config->invincibility_rate);
         printf("heart_rate = %d\n",config->heart_rate);
         printf("health_up_rate = %d\n",config->health_up_rate);
+        printf("number_of_powers = %d\n",config->number_of_powers);
+        printf("powers_spawn_rate = %d\n",config->powers_spawn_rate);
         
 
 }  

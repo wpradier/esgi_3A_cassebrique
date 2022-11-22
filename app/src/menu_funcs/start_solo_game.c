@@ -9,5 +9,10 @@ void	      start_solo_game(void) {
 
     map = select_map_menu();
 
+    if (map == NULL) {
+	perror("NO MAP");
+	return;
+    }
+
     printw("MAP: %p\n", map);
 }

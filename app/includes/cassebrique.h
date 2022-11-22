@@ -91,6 +91,11 @@ typedef struct s_map {
   t_cell	  ***state;
 } t_map;
 
+typedef struct s_map_list {
+  t_map		  **list;
+  char		  **names;
+  unsigned short  length;
+} t_map_list;
 
 typedef struct s_game {
   t_player	  **players;
@@ -116,12 +121,12 @@ void	    free_config(t_config *config);
 void	    display_config(t_config *config);
 
 // Map
-int	        validate_map_format(char *name);
+int	        validate_map_format(const char *name);
 int	        validate_map_data(t_map *map);
 t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
-t_map	    **list_available_maps(void);
+t_map_list  *list_available_maps(void);
 
 // Menu
 t_startmode select_startmode_menu(void);

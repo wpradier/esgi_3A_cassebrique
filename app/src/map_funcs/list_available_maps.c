@@ -78,7 +78,5 @@ t_map_list	    *list_available_maps(void) {
     map_list->names = names;
     map_list->length = maps_array_size;
 
-    printf("FIRST NAME: %s\n", map_list->names[0]);
-    getch();
     return map_list;
 }

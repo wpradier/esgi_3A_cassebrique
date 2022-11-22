@@ -3,7 +3,7 @@
 int    is_possible_to_move(t_map* our_map, t_player* player, t_direction movement){
 
 
-    t_cordinates player_cord = player->cordinates;
+    t_coordinates player_cord = player->cordinates;
     
     switch (movement)
     {

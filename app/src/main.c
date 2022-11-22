@@ -15,14 +15,15 @@ int	  main(void) {
     printf(NC);
     return 1;
   }
-
+  
+  t_coordinates coordinate;
   t_map *map;
   char* mapString;
   char *map_file_name;
   FILE *map_file;
   t_player* player1;
   player1 = &(t_player){.name ='a',.bomb_range=1,.bombs=1,.health_points=1,.heart=1,.invincible=1,.is_bomb_kick=1,.is_passing_bombs=1,.cordinates = {1,13}};
-
+  coordinate = (t_coordinates){.x = 1,.y = 2};
   map_file_name = "maps/test.cassebrique";
   if (validate_map_format(map_file_name) != VALID_MAP_FORMAT) {
     perror("File format validation error.");
@@ -34,6 +35,10 @@ int	  main(void) {
   printf("WELCOME\n");
   map = init_map(map_file);
   if(map != NULL){
+      map->state[1][2]->bomb = malloc(sizeof(t_bomb));
+      map->state[1][2]->bomb->range = 5;
+      bomb_explosion(coordinate, map );
+
       mapString = display_map(map);
 
       printf("\nTaille de la chaîne %lu", strlen(mapString));

@@ -20,7 +20,8 @@ SRCS = src/main.c\
        src/config_funcs/init_config.c \
        src/config_funcs/display_config.c \
        src/config_funcs/free_config.c \
-	   src/movements_funcs/is_possible_to_move.c
+	   src/movements_funcs/is_possible_to_move.c \
+	   src/bomb_funcs/bomb_funcs.c
 
 
 OBJS = $(SRCS:.c=.o)

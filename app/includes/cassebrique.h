@@ -80,10 +80,15 @@ typedef enum e_direction{
   LEFT
 }t_direction;
 
-typedef struct s_cordinates{
+typedef struct s_coordinates{
   unsigned int x;
   unsigned int y;
-}t_cordinates;
+}t_coordinates;
+
+typedef struct s_bomb{
+  time_t          appear_timestamp;
+  unsigned short  range;
+} t_bomb;
 
 typedef struct s_player {
   char name;
@@ -94,7 +99,7 @@ typedef struct s_player {
   unsigned short is_bomb_kick;
   unsigned int invincible;
   unsigned short heart;
-    t_cordinates cordinates;
+    t_coordinates cordinates;
 } t_player;
 
 
@@ -102,6 +107,7 @@ typedef struct s_player {
 typedef struct cell {
   char		  type;
   void		  *content;
+  t_bomb    *bomb;
 } t_cell;
 
 
@@ -120,6 +126,7 @@ typedef struct s_game {
   t_map		  *map;
   int		  playmode;
 } t_game;
+
 
 
 
@@ -151,6 +158,9 @@ char	    *display_map(t_map *map);
 double get_sum_of_all_rates(t_config* config);
 double* get_probabilities(t_config* config);
 t_power_up give_power_up(t_config* config);
+
+// Bombs
+void bomb_explosion(t_coordinates coordinates , t_map  *map);
 
 
 #endif

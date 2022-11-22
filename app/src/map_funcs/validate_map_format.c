@@ -3,7 +3,7 @@
 //
 #include "cassebrique.h"
 
-int validate_map_format(char *name){
+int validate_map_format(const char *name){
     char* extension = ".cassebrique";
 
     if(strcmp(name + strlen(name) - strlen(extension), extension) != 0){

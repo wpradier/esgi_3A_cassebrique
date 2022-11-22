@@ -14,6 +14,9 @@
 # include <sys/ipc.h>
 # include <arpa/inet.h>
 # include <time.h>
+# include <ncurses.h>
+# include <time.h>
+# include <dirent.h>
 
 /* COLORS */
 
@@ -41,11 +44,14 @@ typedef enum e_power_up{
 }t_power_up;
 
 
-/* PLAYMODES */
+/* STARTMODES */
 
-# define LOCAL 0
-# define SERVER 1
-# define CLIENT 2
+typedef enum e_startmode {
+  LOCAL,
+  SERVER,
+  CLIENT,
+  NOSTART
+} t_startmode;
 
 
 
@@ -118,6 +124,11 @@ typedef struct s_map {
   t_cell	  ***state;
 } t_map;
 
+typedef struct s_map_list {
+  t_map		  **list;
+  char		  **names;
+  unsigned short  length;
+} t_map_list;
 
 typedef struct s_game {
   t_player	  **players;
@@ -148,11 +159,17 @@ void	    free_config(t_config *config);
 void	    display_config(t_config *config);
 
 // Map
-int	        validate_map_format(char *name);
+int	        validate_map_format(const char *name);
 int	        validate_map_data(t_map *map);
 t_map	    *init_map(FILE *map_file);
 void	    free_map(t_map *map);
 char	    *display_map(t_map *map);
+t_map_list  *list_available_maps(void);
+
+// Menu
+t_startmode select_startmode_menu(void);
+void	    start_solo_game(void);
+t_map	    *select_map_menu(void);
 
 // Power Ups
 double get_sum_of_all_rates(t_config* config);

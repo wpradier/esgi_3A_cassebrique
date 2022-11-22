@@ -72,10 +72,6 @@ t_power_up give_power_up(t_config* config){
     double* powers_probabilities;
     t_power_up power_to_return;
 
-    /* Intializes random number generator */
-    time_t t;
-    srand((unsigned) time(&t));
-
     powers_probabilities = get_probabilities(config);
 
     do {

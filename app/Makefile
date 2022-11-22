@@ -21,7 +21,7 @@ SRCS = src/main.c\
        src/config_funcs/display_config.c \
        src/config_funcs/free_config.c \
        src/movements_funcs/is_possible_to_move.c \
-       src/bomb_funcs/bomb_funcs.c
+       src/bomb_funcs/bomb_funcs.c 		\
        src/power_up_funcs/init_power_ups.c\
        src/power_up_funcs/power_to_string.c\
        src/map_funcs/list_available_maps.c 	\

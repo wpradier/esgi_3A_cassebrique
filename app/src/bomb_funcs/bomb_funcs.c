@@ -25,7 +25,7 @@ void bomb_explosion(t_coordinates explosion_coordinates , t_map *map ){
         }   
     }
     //UP destruction
-    for(int i = 1 ; i < map->height-1;i++){
+    /*for(int i = 1 ; i < map->height-1;i++){
         if(i == bomb_range){
             break;
         } 
@@ -37,7 +37,7 @@ void bomb_explosion(t_coordinates explosion_coordinates , t_map *map ){
             break;
         }
 
-    }
+    }*/
     // RIGTH destruction 
     // for(int i = 1 ; i < map->height-1;i++){
     //     if(i == bomb_range){

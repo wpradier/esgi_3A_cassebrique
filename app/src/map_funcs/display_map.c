@@ -25,10 +25,19 @@ char *display_map(t_map *map){
                     }
                     break;
                 case ' ':
-                    if(i == 0 && j == 0){
-                        strcpy(mapString, "-");
+                    // We check the content to show power assigned, else we add '-'
+                    if(map->state[i][j]->content != NULL){
+                        if(i == 0 && j == 0){
+                            strcpy(mapString, power_to_string(*((t_power_up *) map->state[i][j]->content)));
+                        }else{
+                            strcat(mapString, power_to_string(*((t_power_up *) map->state[i][j]->content)));
+                        }
                     }else{
-                        strcat(mapString, "-");
+                        if(i == 0 && j == 0){
+                            strcpy(mapString, "-");
+                        }else{
+                            strcat(mapString, "-");
+                        }
                     }
                     break;
                 case 'p':

@@ -1,7 +1,5 @@
 #include "cassebrique.h"
 
-
-
 int	  main(void) {
   t_config *my_test = init_config("./cassebrique.conf");
   display_config(my_test);

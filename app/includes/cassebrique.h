@@ -13,6 +13,7 @@
 # include <sys/socket.h>
 # include <sys/ipc.h>
 # include <arpa/inet.h>
+# include <time.h>
 
 /* COLORS */
 
@@ -26,6 +27,7 @@
 /* POWERUPS */
 
 typedef enum e_power_up{
+    NO_POWER,
     BOMB_UP,
     BOMB_DOWN,
     YELLOW_FLAME,
@@ -35,8 +37,7 @@ typedef enum e_power_up{
     BOMB_KICK,
     INVICIBILITY,
     HEART,
-    HEALTH_UP,
-    NO_POWER
+    HEALTH_UP
 }t_power_up;
 
 
@@ -60,7 +61,6 @@ typedef struct s_config {
     unsigned short number_of_powers;
     unsigned short bomb_max_range;
     unsigned short powers_spawn_rate;
-    // Spawn rates
     unsigned short bomb_up_rate;
     unsigned short bomb_down_rate;
     unsigned short yellow_flame_rate;
@@ -158,6 +158,8 @@ char	    *display_map(t_map *map);
 double get_sum_of_all_rates(t_config* config);
 double* get_probabilities(t_config* config);
 t_power_up give_power_up(t_config* config);
+void init_power_ups(t_map *map, t_config* config);
+char* power_to_string(t_power_up power);
 
 // Bombs
 void bomb_explosion(t_coordinates coordinates , t_map  *map);

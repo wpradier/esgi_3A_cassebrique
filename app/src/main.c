@@ -2,7 +2,7 @@
 
 int	  main(void) {
     printf("WELCOME\n");
-    /*
+
     t_map *map;
     char* mapString;
     char *map_file_name;
@@ -14,34 +14,13 @@ int	  main(void) {
         return EXIT_FAILURE;
     }
 
-    map_file = fopen(map_file_name, "r");
-
-    map = init_map(map_file);
-    if(map != NULL){
-        mapString = display_map(map);
-
-        printf("\nTaille de la chaîne %lu", strlen(mapString));
-        printf("\n");
-
-        success_msg(mapString);
-
-        free(mapString);
-        highlight_msg("Freed map string\n");
-
-        free_map(map);
-    }
-    */
-
-    // -------------------------------------
-
-    /*
     t_config* config;
-    t_power_up power;
+    //t_power_up power;
 
     config = malloc(sizeof(t_config));
 
     config->number_of_powers = 10;
-    config->powers_spawn_rate = 10;
+    config->powers_spawn_rate = 200;
 
     config->bomb_up_rate = 20;
     config->bomb_down_rate = 0;
@@ -54,10 +33,27 @@ int	  main(void) {
     config->heart_rate = 0;
     config->health_up_rate = 10;
 
-    power = give_power_up(config);
-    success_msg("\nPower no°");
-    printf("%d", power);
-    */
+
+    map_file = fopen(map_file_name, "r");
+
+    map = init_map(map_file);
+    if(map != NULL){
+        init_power_ups(map, config);
+
+        mapString = display_map(map);
+
+        printf("\nTaille de la chaîne %lu", strlen(mapString));
+        printf("\n");
+
+        success_msg(mapString);
+
+        free(mapString);
+        highlight_msg("Freed map string\n");
+
+        free_map(map);
+    }
+
+    // -------------------------------------
 
 
 

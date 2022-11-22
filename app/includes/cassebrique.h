@@ -135,5 +135,6 @@ char	    *display_map(t_map *map);
 double get_sum_of_all_rates(t_config* config);
 double* get_probabilities(t_config* config);
 t_power_up give_power_up(t_config* config);
+void init_power_ups(t_map *map, t_config* config);
 
 #endif

@@ -90,6 +90,4 @@ t_power_up give_power_up(t_config* config){
     free(powers_probabilities);
     return power_to_return;
 
-
-
 }

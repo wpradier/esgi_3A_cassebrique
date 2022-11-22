@@ -8,6 +8,10 @@ int	  main(void) {
     char *map_file_name;
     FILE *map_file;
 
+    /* Intializes random number generator */
+    time_t t;
+    srand((unsigned) time(&t));
+
     map_file_name = "maps/test.cassebrique";
     if (validate_map_format(map_file_name) != VALID_MAP_FORMAT) {
         perror("File format validation error.");
@@ -20,7 +24,7 @@ int	  main(void) {
     config = malloc(sizeof(t_config));
 
     config->number_of_powers = 10;
-    config->powers_spawn_rate = 200;
+    config->powers_spawn_rate = 50;
 
     config->bomb_up_rate = 20;
     config->bomb_down_rate = 0;

@@ -28,9 +28,9 @@ char *display_map(t_map *map){
                     // We check the content to show power assigned, else we add '-'
                     if(map->state[i][j]->content != NULL){
                         if(i == 0 && j == 0){
-                            strcpy(mapString, (const char *) *((t_power_up *) map->state[i][j]->content));
+                            strcpy(mapString, power_to_string(*((t_power_up *) map->state[i][j]->content)));
                         }else{
-                            strcat(mapString, (const char *) *((t_power_up *) map->state[i][j]->content));
+                            strcat(mapString, power_to_string(*((t_power_up *) map->state[i][j]->content)));
                         }
                     }else{
                         if(i == 0 && j == 0){

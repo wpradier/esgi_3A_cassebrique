@@ -7,7 +7,7 @@ void free_map(t_map *map){
 
     for (int i = 0; i < map->height; i++) {
         for (int j = 0; j < map->width; j++) {
-            //free(map->state[i][j]->content);
+            free(map->state[i][j]->content);
             free(map->state[i][j]);
         }
         free(map->state[i]);

@@ -18,6 +18,7 @@ SRCS = src/main.c\
        src/map_funcs/validate_map_format.c\
        src/power_up_funcs/give_power_up.c\
        src/power_up_funcs/init_power_ups.c\
+       src/power_up_funcs/power_to_string.c\
 
 
 OBJS = $(SRCS:.c=.o)
